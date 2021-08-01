@@ -22,13 +22,12 @@
     ```
 
 ## Download Interlock proxy(Nginx) config 
-    ```
-    docker config inspect --format '{{ printf "%s" .Spec.Data }}' $(docker service inspect --format '{{(index .Spec.TaskTemplate.ContainerSpec.Configs 0).ConfigName}}' ucp-interlock-proxy-amer) > interlock-nginx.conf
-    ```
+   ```
+   docker config inspect --format '{{ printf "%s" .Spec.Data }}' $(docker service inspect --format '{{(index .Spec.TaskTemplate.ContainerSpec.Configs 0).ConfigName}}' ucp-interlock-proxy-amer) > interlock-nginx.conf
+   ```
 
 ## Sample application
-    - Use the compose files from `samples` directory
+   - Use the compose files from `samples` directory
 
 ## Monitoring Nginx
-    - Use `monitor_nginx.sh` script
-    
+   - Use `monitor_nginx.sh` script
