@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  demo:
+    image: avinashdesireddy/go-webapp
+    deploy:
+      replicas: 1
+      labels:
+        com.docker.lb.hosts: "amer.swarm.cluster.avinashdesireddy.com"
+        com.docker.lb.network: demoapp
+        com.docker.lb.port: 8080
+        com.docker.lb.service_cluster: amer
+    networks:
+      - demoapp
+
+networks:
+  demoapp:
+    external:
+      name: demoapp

@@ -1,0 +1,136 @@
+ListenAddr = ":8080"
+DockerURL = "unix:///var/run/docker.sock"
+AllowInsecure = false
+PollInterval = "3s"
+
+[Extensions]
+[Extensions.amer]
+    Image = "mirantis/ucp-interlock-extension:3.3.6"
+    ServiceName = "ucp-interlock-extension-amer"
+    Args = []
+    Constraints = ["node.labels.com.docker.ucp.orchestrator.swarm==true", "node.platform.os==linux"]
+    ConfigImage = "mirantis/ucp-interlock-config:3.3.6"
+    ConfigServiceName = "ucp-interlock-config-amer"
+    ProxyImage = "mirantis/ucp-interlock-proxy:3.3.6"
+    ServiceCluster = "amer"
+    ProxyServiceName = "ucp-interlock-proxy-amer"
+    ProxyConfigPath = "/etc/nginx/nginx.conf"
+    ProxyReplicas = 1
+    ProxyStopSignal = "SIGQUIT"
+    ProxyStopGracePeriod = "5s"
+    ProxyConstraints = ["node.labels.com.docker.ucp.orchestrator.swarm==true", "node.platform.os==linux", "node.labels.region==amer"]
+    PublishMode = "host"
+    PublishedPort = 80
+    TargetPort = 80
+    PublishedSSLPort = 8443
+    TargetSSLPort = 443
+    [Extensions.amer.Labels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.amer.ContainerLabels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.amer.ProxyLabels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.amer.ProxyContainerLabels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.amer.Config]
+      Version = ""
+      HTTPVersion = "1.1"
+      User = "nginx"
+      PidPath = "/var/run/proxy.pid"
+      MaxConnections = 1024
+      ConnectTimeout = 5
+      SendTimeout = 600
+      ReadTimeout = 600
+      IPHash = false
+      AdminUser = ""
+      AdminPass = ""
+      SSLOpts = ""
+      SSLDefaultDHParam = 1024
+      SSLDefaultDHParamPath = ""
+      SSLVerify = "required"
+      WorkerProcesses = 1
+      RLimitNoFile = 65535
+      SSLCiphers = "HIGH:!aNULL:!MD5"
+      SSLProtocols = "TLSv1.2"
+      AccessLogPath = "/dev/stdout"
+      ErrorLogPath = "/dev/stdout"
+      MainLogFormat = "'$remote_addr - $remote_user [$time_local] \"$request\" '\n\t\t    '$status $body_bytes_sent \"$http_referer\" '\n\t\t    '\"$http_user_agent\" \"$http_x_forwarded_for\"';"
+      TraceLogFormat = "'$remote_addr - $remote_user [$time_local] \"$request\" $status '\n\t\t    '$body_bytes_sent \"$http_referer\" \"$http_user_agent\" '\n\t\t    '\"$http_x_forwarded_for\" $reqid $msec $request_time '\n\t\t    '$upstream_connect_time $upstream_header_time $upstream_response_time';"
+      KeepaliveTimeout = "75s"
+      ClientMaxBodySize = "32m"
+      ClientBodyBufferSize = "8k"
+      ClientHeaderBufferSize = "1k"
+      LargeClientHeaderBuffers = "4 8k"
+      ClientBodyTimeout = "60s"
+      UnderscoresInHeaders = false
+      UpstreamZoneSize = 64
+      ServerNamesHashBucketSize = 128
+      GlobalOptions = []
+      HTTPOptions = []
+      TCPOptions = []
+      HideInfoHeaders = false
+[Extensions.apac]
+    Image = "mirantis/ucp-interlock-extension:3.3.6"
+    ServiceName = "ucp-interlock-extension-apac"
+    Args = []
+    Constraints = ["node.labels.com.docker.ucp.orchestrator.swarm==true", "node.platform.os==linux"]
+    ConfigImage = "mirantis/ucp-interlock-config:3.3.6"
+    ConfigServiceName = "ucp-interlock-config-apac"
+    ProxyImage = "mirantis/ucp-interlock-proxy:3.3.6"
+    ServiceCluster = "apac"
+    ProxyServiceName = "ucp-interlock-proxy-apac"
+    ProxyConfigPath = "/etc/nginx/nginx.conf"
+    ProxyReplicas = 2
+    ProxyStopSignal = "SIGQUIT"
+    ProxyStopGracePeriod = "5s"
+    ProxyConstraints = ["node.labels.com.docker.ucp.orchestrator.swarm==true", "node.platform.os==linux", "node.labels.region==apac"]
+    PublishMode = "host"
+    PublishedPort = 80
+    TargetPort = 80
+    PublishedSSLPort = 8443
+    TargetSSLPort = 443
+    [Extensions.apac.Labels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.apac.ContainerLabels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.apac.ProxyLabels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.apac.ProxyContainerLabels]
+      "com.docker.ucp.InstanceID" = "u2xr1myxdj53t0ket144vu9q7"
+    [Extensions.apac.Config]
+      Version = ""
+      HTTPVersion = "1.1"
+      User = "nginx"
+      PidPath = "/var/run/proxy.pid"
+      MaxConnections = 1024
+      ConnectTimeout = 5
+      SendTimeout = 600
+      ReadTimeout = 600
+      IPHash = false
+      AdminUser = ""
+      AdminPass = ""
+      SSLOpts = ""
+      SSLDefaultDHParam = 1024
+      SSLDefaultDHParamPath = ""
+      SSLVerify = "required"
+      WorkerProcesses = 1
+      RLimitNoFile = 65535
+      SSLCiphers = "HIGH:!aNULL:!MD5"
+      SSLProtocols = "TLSv1.2"
+      AccessLogPath = "/dev/stdout"
+      ErrorLogPath = "/dev/stdout"
+      MainLogFormat = "'$remote_addr - $remote_user [$time_local] \"$request\" '\n\t\t    '$status $body_bytes_sent \"$http_referer\" '\n\t\t    '\"$http_user_agent\" \"$http_x_forwarded_for\"';"
+      TraceLogFormat = "'$remote_addr - $remote_user [$time_local] \"$request\" $status '\n\t\t    '$body_bytes_sent \"$http_referer\" \"$http_user_agent\" '\n\t\t    '\"$http_x_forwarded_for\" $reqid $msec $request_time '\n\t\t    '$upstream_connect_time $upstream_header_time $upstream_response_time';"
+      KeepaliveTimeout = "75s"
+      ClientMaxBodySize = "32m"
+      ClientBodyBufferSize = "8k"
+      ClientHeaderBufferSize = "1k"
+      LargeClientHeaderBuffers = "4 8k"
+      ClientBodyTimeout = "60s"
+      UnderscoresInHeaders = false
+      UpstreamZoneSize = 64
+      ServerNamesHashBucketSize = 128
+      GlobalOptions = []
+      HTTPOptions = []
+      TCPOptions = []
+      HideInfoHeaders = false
